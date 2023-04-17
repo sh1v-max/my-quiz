@@ -10,13 +10,115 @@
     background: linear-gradient(to bottom, rgba(0, 0, 0, 0), #020230),
     url("./assets/bg1.jpg") center;
     background-size: cover;
+    display: flex;
+    flex-direction: column;
 }
+
+.top{
+    height: 50%;
+    position: relative;
+}
+
+.timer {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    border: 10px solid white;
+    border-color: rgb(0, 204, 255);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    bottom: 10px;
+    left: 80px;
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.bottom{
+    height: 50%;
+}
+
+.trivia {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.question {
+    width: 80%;
+    background: linear-gradient(#00096b, black);
+    text-align: center;
+    padding: 20px;
+    border-radius: 20px;
+    border: 0.1px solid rgb(15, 51, 255);
+    font-size: 20px;
+}
+
+.answers {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.answer {
+    width: 30%;
+    padding: 10px;
+    margin: 0 20px 40px 20px;
+    text-align: center;
+    color: #ffffff;
+    opacity: 0.5;
+    border: 2px solid rgb(97, 92, 255);
+    border-radius: 20px;
+    font-weight: 800;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 01;
+    transition: 0.3s;
+}
+
+.answer:hover,
+.answer.active {
+    background: linear-gradient(#1500fd, #000000);
+    color: white;
+}
+
+.answer.correct{
+    animation: correct 2s ease forwards;
+}
+
+@keyframes correct {
+
+    0%,
+    22%,
+    42% {
+        background: mediumblue;
+    }
+
+    20%,
+    40%,
+    60% {
+        background: linear-gradient(#0e0124, #22074d);
+    }
+
+    62%,
+    100% {
+        background: green;
+    }
+}
+
 
 .pyramid {
     width: 25%;
     display: flex;
     align-items: center;
     justify-content: center;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0), #020230),
+    url("./assets/bg5.jpg") center;
+    background-size: cover;
 }
 
 .moneyList {

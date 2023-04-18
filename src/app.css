@@ -49,12 +49,13 @@
 
 .question {
     width: 80%;
-    background: linear-gradient(#00096b, black);
+    background: transparent;
     text-align: center;
     padding: 20px;
     border-radius: 20px;
-    border: 0.1px solid rgb(15, 51, 255);
+    border: 2px solid rgb(97, 92, 255);
     font-size: 20px;
+
 }
 
 .answers {
@@ -73,7 +74,7 @@
     opacity: 0.5;
     border: 2px solid rgb(97, 92, 255);
     border-radius: 20px;
-    font-weight: 800;
+    font-weight: 400;
     font-size: 20px;
     cursor: pointer;
     opacity: 01;
@@ -86,8 +87,8 @@
     color: white;
 }
 
-.answer.correct{
-    animation: correct 2s ease forwards;
+.answer.correct {
+    animation: correct 3s ease forwards;
 }
 
 @keyframes correct {
@@ -95,18 +96,42 @@
     0%,
     22%,
     42% {
-        background: mediumblue;
+        background: green;
     }
 
     20%,
     40%,
     60% {
-        background: linear-gradient(#0e0124, #22074d);
+        background: transparent;
     }
 
     62%,
     100% {
+        background: linear-gradient(green, #000000);
+    }
+}
+
+.answer.wrong {
+    animation: wrong 3s ease forwards;
+}
+
+@keyframes wrong {
+
+    0%,
+    22%,
+    42% {
         background: green;
+    }
+
+    20%,
+    40%,
+    60% {
+        background: transparent;
+    }
+
+    62%,
+    100% {
+        background: linear-gradient(red, #000000);    
     }
 }
 
@@ -147,4 +172,53 @@
 .moneyListItemAmount {
     font-size: 20px;
     font-weight: 300;
+}
+
+.endText {
+    position: relative;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+.start {
+    background: linear-gradient(rgb(0, 255, 55), #ff0000);
+    border-radius: 5px;
+    width: 250px;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    position: relative;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+.startInput {
+    width: 100%;
+    height: 30px;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 18px;
+}
+
+.startInput:focus {
+    outline: none;
+}
+
+.startButton {
+    width: 50%;
+    height: 30px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 500;
 }

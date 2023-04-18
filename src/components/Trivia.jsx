@@ -1,15 +1,51 @@
+import { useEffect, useState } from "react";
 
-export default function Trivia() {
+export default function Trivia({
+  data,
+  questionNumber,
+  setQuestionNumber,
+  setStop,
+}) {
+  const [question, setQuestion] = useState(null);
+  const [selectedAnswer, setSelectedAnswer] = useState(null);
+  const [className, setClassName] = useState("answer");
+
+  useEffect(()=>{
+    setQuestion(data[questionNumber - 1]);
+  },[data, questionNumber])
+
+  const delay = (duration, callback) => {
+    setTimeout(() => {
+      callback();
+    }, duration);
+  };
+
+
+  const handleClick = (a) =>{
+    setSelectedAnswer(a);
+    setClassName("answer active");
+    delay(1500, () =>
+      setClassName(a.correct ? "answer correct" : "answer wrong")
+    );
+    delay(6000, () =>{
+      if(a.correct){
+        setQuestionNumber((prev) => prev+1);
+      }else{
+        setStop(true);
+      }
+    });
+  };
+
   return (
     <div className="trivia">
-      <div className="question">
-        The International Literacy day is observed on?
-      </div>
+      <div className="question">{(question?. question)}</div>
       <div className="answers">
-        <div className="answer correct">Sep 8</div>
-        <div className="answer">Nov 28</div>
-        <div className="answer">May 2</div>
-        <div className="answer">Sep 22</div>
+        {question?.answers.map((a) => (
+          <div className={selectedAnswer === a ? className: "answer"} 
+          onClick={()=>handleClick(a)}>
+            {a.text}
+          </div>
+        ))}
       </div>
     </div>
   );
